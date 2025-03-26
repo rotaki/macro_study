@@ -12,4 +12,4 @@
 ## Macros case studies
 ### [No panic](https://github.com/dtolnay/no-panic)
 
-* If there is a possibility of failure, a drop will be called. If there is no possibility of failure, a drop will be removed by the optimization of the compiler when used with `core::mem::forget`. So, by compile-time errors into the drop function, we can see whether a function potentially panics or not at compile time.
+* If there is a possibility of `panic`, a drop function of a object allocated before the panic will be called. If there is no possibility of `panic`s, the drop function will be removed by the compiler optimization when `core::mem::forget` is declared. So, by injecting compile-time errors into the drop function, we can see whether a function potentially panics or not at compile time.
