@@ -3,13 +3,12 @@
 #[macro_use]
 extern crate hello_world_macro;
 
-#[derive(Hello)]
+#[derive(Hello, UpperCase)]
 struct Example;
 
-#[derive(Hello)]
+#[derive(Hello, UpperCase)]
 enum Pet {
     Dog,
-    Cat,
 }
 
 fn main() {
@@ -17,7 +16,9 @@ fn main() {
     let e = Example;
     // trace_macros!(false);
     e.hello_world();
+    println!("{}", e.uppercase());
 
     let d = Pet::Dog;
     d.hello_world();
+    println!("{}", d.uppercase());
 }

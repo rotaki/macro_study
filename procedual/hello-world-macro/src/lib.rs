@@ -17,3 +17,17 @@ pub fn hello(item: TokenStream) -> TokenStream {
     };
     add_hello_world.into()
 }
+
+#[proc_macro_derive(UpperCase)]
+pub fn uppercase(item: TokenStream) -> TokenStream {
+    let ast = parse_macro_input!(item as DeriveInput);
+    let name = ast.ident;
+    let add_uppercase = quote! {
+        impl #name {
+            fn uppercase(&self) -> String {
+                stringify!(#name).to_uppercase()
+            }
+        }
+    };
+    add_uppercase.into()
+}
