@@ -11,6 +11,12 @@ enum Pet {
     Dog,
 }
 
+#[public]
+struct Foo {
+    bar: i32,
+    pub baz: i32,
+}
+
 fn main() {
     //trace_macros!(true);
     let e = Example;
@@ -21,4 +27,7 @@ fn main() {
     let d = Pet::Dog;
     d.hello_world();
     println!("{}", d.uppercase());
+
+    let f = Foo { bar: 1, baz: 2 };
+    println!("{:?}", f.bar);
 }
