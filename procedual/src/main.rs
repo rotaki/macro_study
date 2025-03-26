@@ -17,6 +17,12 @@ struct Foo {
     pub baz: i32,
 }
 
+#[public2]
+struct Foo2 {
+    bar: i32,
+    pub baz: i32,
+}
+
 fn main() {
     //trace_macros!(true);
     let e = Example;
@@ -30,4 +36,7 @@ fn main() {
 
     let f = Foo { bar: 1, baz: 2 };
     println!("{:?}", f.bar);
+
+    let f2 = Foo2 { bar: 1, baz: 2 };
+    println!("{:?}", f2.bar);
 }
