@@ -131,6 +131,7 @@ impl Parse for StructField {
 #[proc_macro_attribute]
 pub fn public2(_attr: TokenStream, item: TokenStream) -> TokenStream {
     let ast = parse_macro_input!(item as DeriveInput);
+    eprintln!("{:#?}", ast);
     let name = ast.ident;
 
     let fields = match ast.data {
@@ -145,6 +146,8 @@ pub fn public2(_attr: TokenStream, item: TokenStream) -> TokenStream {
         ) => named,
         _ => unimplemented!("Only works for structs with named fields")
     };
+
+    eprintln!("{:#?}", fields);
 
     // let builder_fields =
     //     fields.iter().map(StructField::new);
